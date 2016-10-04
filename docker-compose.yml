@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+    nginx:
+        image: nginx
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    app:
+        image: python
+        volumes:
+            - ./httpserver.py:/work/httpserver.py:ro
+        working_dir: /work
+        command: ["python", "./httpserver.py"]
+
